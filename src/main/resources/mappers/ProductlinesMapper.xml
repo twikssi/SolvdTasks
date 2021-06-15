@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="by.demoqa.db.mappers.ProductlineMapper">
+
+    <select id="getAll" resultMap="resultProductLine">
+        SELECT * FROM productlines;
+    </select>
+
+    <select id="findByProductLine" resultMap="resultProductLine">
+        SELECT * FROM productlines WHERE productLine = #{productLine};
+    </select>
+
+    <insert id="createProductline">
+        INSERT INTO productlines (productLine, textDescription, htmlDescription, image)
+        VALUES (
+        #{productLine},
+        #{textDescription},
+        #{htmlDescription},
+        #{image}
+        )
+    </insert>
+
+    <update id="updateProductline">
+        UPDATE productlines
+        <set>
+            <if test="null != productLine">
+                productLine = #{productLine},
+            </if>
+            <if test="null != textDescription">
+                textDescription = #{textDescription},
+            </if>
+            <if test="null != htmlDescription">
+                htmlDescription = #{htmlDescription},
+            </if>
+            <if test="null != image">
+                image = #{image},
+            </if>
+        </set>
+        WHERE productLine = #{productLine}
+    </update>
+
+    <delete id="deleteProductline">
+        DELETE FROM productlines
+        WHERE productLine = #{productLine}
+    </delete>
+
+    <resultMap id="resultProductLine" type="ProductLine">
+        <result property="productLine" column="productLine"/>
+        <result property="textDescription" column="textDescription"/>
+        <result property="htmlDescription" column="htmlDescription"/>
+        <result property="image" column="image"/>
+    </resultMap>
+
+</mapper>

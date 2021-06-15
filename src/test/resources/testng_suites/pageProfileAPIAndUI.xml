@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="page profile tests api plus ui" parallel="tests">
+
+    <test name="page profile tests api plus ui">
+        <classes>
+            <class name="by.demoqa.web.PageProfileAPIAndUITests"/>
+        </classes>
+    </test>
+
+</suite>

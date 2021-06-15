@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="Tests api user crud" parallel="tests">
+
+    <test name="api user crud">
+        <classes>
+            <class name="by.demoqa.api.account.APICRUDUserTest"/>
+        </classes>
+    </test>
+
+</suite>

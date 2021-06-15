@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="Tests for buttons page" parallel="tests">
+
+    <suite-files>
+        <suite-file path="src/test/resources/testng_suites/pageButtons.xml"></suite-file>
+        <suite-file path="src/test/resources/testng_suites/pageCheckbox.xml"></suite-file>
+        <suite-file path="src/test/resources/testng_suites/pageDynamicProperties.xml"></suite-file>
+        <suite-file path="src/test/resources/testng_suites/pageForm.xml"></suite-file>
+        <suite-file path="src/test/resources/testng_suites/pageLinks.xml"></suite-file>
+        <suite-file path="src/test/resources/testng_suites/pageTextBox.xml"></suite-file>
+        <suite-file path="src/test/resources/testng_suites/pageUploadDownload.xml"></suite-file>
+        <suite-file path="src/test/resources/testng_suites/pageWebTables.xml"></suite-file>
+    </suite-files>
+
+</suite>

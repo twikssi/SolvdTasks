@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="Tests for links page" parallel="tests">
+
+    <test name="page links">
+        <classes>
+            <class name="by.demoqa.web.PageLinksTests"/>
+        </classes>
+    </test>
+
+</suite>

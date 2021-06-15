@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="Test for email" parallel="tests">
+
+    <test name="email test">
+        <classes>
+            <class name="by.demoqa.email.EmailTest"/>
+        </classes>
+    </test>
+
+</suite>

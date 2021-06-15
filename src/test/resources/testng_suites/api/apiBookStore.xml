@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="Tests api book store" parallel="tests">
+
+    <test name="api book store">
+        <classes>
+            <class name="by.demoqa.api.bookstore.APIBookStore"/>
+        </classes>
+    </test>
+
+</suite>

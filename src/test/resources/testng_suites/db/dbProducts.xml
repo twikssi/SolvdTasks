@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="db product tests" parallel="tests">
+
+    <test name="db product tests">
+        <classes>
+            <class name="by.demoqa.db.DbProductTest"/>
+        </classes>
+    </test>
+
+</suite>
