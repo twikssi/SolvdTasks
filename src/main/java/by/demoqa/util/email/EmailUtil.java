@@ -1,5 +1,6 @@
 package by.demoqa.util.email;
 
+import com.qaprosoft.carina.core.foundation.crypto.CryptoTool;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,13 +24,15 @@ public class EmailUtil {
     protected static Authenticator auth;
     protected static Session session;
     public static final int LAST_MESSAGE = -1;
+    protected CryptoTool cryptoTool = new CryptoTool();
 
     public EmailUtil() {
+
         SMTP_HOST = R.EMAIL.get("mail.smtp.host");
         SMTP_Port = R.EMAIL.get("mail.smtp.port");
-        SMTP_AUTH_USER = R.EMAIL.get("mail.smtp.user");
-        SMTP_AUTH_PWD = R.EMAIL.get("mail.smtp.pass");
-        EMAIL_FROM = R.EMAIL.get("mail.smtp.from");
+        SMTP_AUTH_USER = cryptoTool.decrypt(R.EMAIL.get("mail.smtp.user"));
+        SMTP_AUTH_PWD = cryptoTool.decrypt(R.EMAIL.get("mail.smtp.pass"));
+        EMAIL_FROM = cryptoTool.decrypt(R.EMAIL.get("mail.smtp.from"));
         IMAP_SERVER = R.EMAIL.get("mail.imap.server");
 
         auth = new EmailAuthenticator(SMTP_AUTH_USER,
@@ -89,7 +92,8 @@ public class EmailUtil {
 
     public String getContentMessage(int messageNumber) {
         try {
-            String content = ((Multipart) readEmail("INBOX", Folder.READ_ONLY, messageNumber).getContent()).getBodyPart(0).getContent().toString();
+            Multipart mp = (Multipart) readEmail("INBOX", Folder.READ_ONLY, messageNumber).getContent();
+            String content = mp.getBodyPart(0).getContent().toString();
             log.info("CONTENT: {}", content);
             return content;
         } catch (IOException | MessagingException e) {
