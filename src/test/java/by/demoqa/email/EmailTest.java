@@ -2,13 +2,9 @@ package by.demoqa.email;
 
 import by.demoqa.util.email.EmailUtil;
 import com.qaprosoft.carina.core.foundation.AbstractTest;
-import com.qaprosoft.carina.core.foundation.crypto.CryptoConsole;
-import com.qaprosoft.carina.core.foundation.crypto.CryptoTool;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import javax.mail.MessagingException;
 
 public class EmailTest extends AbstractTest {
 

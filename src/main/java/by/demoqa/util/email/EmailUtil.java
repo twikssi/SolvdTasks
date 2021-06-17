@@ -92,10 +92,12 @@ public class EmailUtil {
 
     public String getContentMessage(int messageNumber) {
         try {
-            Multipart mp = (Multipart) readEmail("INBOX", Folder.READ_ONLY, messageNumber).getContent();
-            String content = mp.getBodyPart(0).getContent().toString();
-            log.info("CONTENT: {}", content);
-            return content;
+            Message messageCont = readEmail("INBOX", Folder.READ_ONLY, messageNumber);
+            if (messageCont.isMimeType("text/*")) return messageCont.getContent().toString();
+            else if (messageCont.isMimeType("multipart/*")){
+                return ((Multipart) messageCont.getContent()).getBodyPart(0).getContent().toString();
+            }
+            else throw new RuntimeException("Unhandled MIME type: " + messageCont.getContentType());
         } catch (IOException | MessagingException e) {
             e.printStackTrace();
         }
