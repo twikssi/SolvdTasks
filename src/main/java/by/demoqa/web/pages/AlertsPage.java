@@ -27,39 +27,32 @@ public class AlertsPage extends AbstractPage {
     @FindBy(id = "promptResult")
     private ExtendedWebElement promtResult;
 
-    @FindBy(tagName = "footer")
-    private ExtendedWebElement footer;
-
     public AlertsPage(WebDriver driver) {
         super(driver);
         setPageURL(R.CONFIG.get(Configuration.get(Configuration.Parameter.URL)) + "/alerts");
     }
 
-    public boolean isFooterPresent(){
-        return footer.isPresent();
-    }
-
-    public ExtendedWebElement getPromtResult(){
+    public ExtendedWebElement getPromtResult() {
         return promtResult;
     }
 
-    public String getConfirmResult(){
+    public String getConfirmResult() {
         return confirmResult.getText();
     }
 
-    public void clickAlertButton(){
+    public void clickAlertButton() {
         clickAlertButton.doubleClick();
     }
 
-    public void clickTimerAlertButton(){
+    public void clickTimerAlertButton() {
         clickTimerAlertButton.click();
     }
 
-    public void clickConfirmButton(){
+    public void clickConfirmButton() {
         clickConfirmButton.doubleClick();
     }
 
-    public void clickPromtButton(){
+    public void clickPromtButton() {
         promtButton.doubleClick();
     }
 }
