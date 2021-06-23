@@ -1,0 +1,32 @@
+# To execute this docker-compose yml file use `docker-compose -f docker-compose-v3.yml up`
+# Add the `-d` flag at the end for detached execution
+# To stop the execution, hit Ctrl+C, and then `docker-compose -f docker-compose-v3.yml down`
+version: "3"
+services:
+
+  demoqaWeb:
+    image: demoqa
+    depends_on:
+      - selenium-hub
+      - chrome
+    links:
+        - "selenium-hub:ports"
+
+  chrome:
+    image: selenium/node-chrome:4.0.0-rc-1-prerelease-20210618
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    ports:
+      - "6900:6900"
+
+  selenium-hub:
+    image: selenium/hub:4.0.0-rc-1-prerelease-20210618
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
