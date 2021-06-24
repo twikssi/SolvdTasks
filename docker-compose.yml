@@ -6,16 +6,16 @@ services:
 
   demoqaWeb:
     image: demoqa
+    volumes:
+      - /Users/abarysevich/Documents/Projects/solvdTasks/SolvdTask/volumeqa:/usr/app/reports/
     depends_on:
       - selenium-hub
       - chrome
-    links:
-        - "selenium-hub:ports"
+    networks:
+      - solvd-network
 
   chrome:
     image: selenium/node-chrome:4.0.0-rc-1-prerelease-20210618
-    volumes:
-      - /dev/shm:/dev/shm
     depends_on:
       - selenium-hub
     environment:
@@ -24,9 +24,20 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
     ports:
       - "6900:6900"
+    networks:
+      - solvd-network
 
   selenium-hub:
     image: selenium/hub:4.0.0-rc-1-prerelease-20210618
     container_name: selenium-hub
     ports:
       - "4444:4444"
+    networks:
+      - solvd-network
+
+networks:
+  solvd-network:
+    driver: bridge
+
+volumes:
+  volumeqa:

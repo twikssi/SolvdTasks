@@ -31,6 +31,7 @@ public class PageAlertTests extends AbstractTest {
         AlertsPage alertsPage = new AlertsPage(getDriver());
         alertsPage.open();
 
+
         alertsPage.clickTimerAlertButton();
         pause(5);
         Assert.assertTrue(alertsPage.isAlertPresent(), "Alert isn't present");

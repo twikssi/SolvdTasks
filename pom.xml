@@ -19,7 +19,7 @@
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <zebrunner-agent.version>1.4.0</zebrunner-agent.version>
         <mysql.version>8.0.24</mysql.version>
-        <suite>pageLinks</suite>
+        <suite>pageUploadDownload</suite>
         <jakarta.version>1.6.7</jakarta.version>
     </properties>
 
